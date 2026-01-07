@@ -1,21 +1,27 @@
 workflows:
-  alpine_printpack_android:
-    name: Alpine Printpack Android Build
+  alpine_printpack_macos:
+    name: Alpine Printpack macOS Build
     max_build_duration: 60
+
     environment:
       flutter: stable
-      xcode: latest
-      vars:
-        APP_PACKAGE: "com.example.costingapp"
+
     scripts:
       - name: Flutter pub get
         script: |
           flutter pub get
-      - name: Build Android APK (Release)
+
+      - name: Enable macOS
         script: |
-          flutter build apk --release
+          flutter config --enable-macos-desktop
+
+      - name: Build macOS Release
+        script: |
+          flutter build macos --release
+
     artifacts:
-      - build/app/outputs/flutter-apk/app-release.apk
+      - build/macos/Build/Products/Release/*.app
+
     publishing:
       email:
         recipients:
