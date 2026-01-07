@@ -19,7 +19,4 @@ workflows:
     publishing:
       email:
         recipients:
-          - your_email@example.com
-        notify:
-          build_success: true
-          build_failure: true
+          - yashrochlani7@gmail.com
